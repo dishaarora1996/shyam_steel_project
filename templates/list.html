@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+	<div class="todo-list">
+        <div class="center-column">
+			<a class="btn btn-sm btn-info" href="{% url 'create_task' %}">Create</a>
+            {% for task in data %}
+                <div class="item-row">
+                    <a class="btn btn-sm btn-info" href="{% url 'update_task' task.task_id %}">Update</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete' task.task_id %}">Delete</a>
+
+                    {% if task.completed == True %}
+                    <strike>{{task}}</strike>
+                    {% else %}
+                    <span>{{task}}</span>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
